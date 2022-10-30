@@ -29,10 +29,10 @@ exports.show = async(req, res, next) =>{
 
 //agregando un registro
 exports.add = async(req, res) =>{
-    const stadium = new Products(req.body);
+    const producto = new Products(req.body);
 
     try{
-        await stadium.save();
+        await producto.save();
         res.json({message: "Producto Agregado"});
         }catch(error){
             console.log(error);
@@ -44,7 +44,7 @@ exports.add = async(req, res) =>{
 //actualizando un registro
 exports.update = async (req, res, next) =>{
     try{
-        const productos = await Products.findOneAndUpdate(
+        const producto = await Products.findOneAndUpdate(
             {id: req.params.id},req.body
         );
         res.json({message: "Producto Actualizado"});
@@ -60,7 +60,7 @@ exports.update = async (req, res, next) =>{
 //eliminando un producto
 exports.delete = async (req, res, next) =>{
     try{
-        const productos = await Products.findOneAndDelete({id: req.params.id});
+        const producto = await Products.findOneAndDelete({id: req.params.id});
         res.json({message: "Producto eliminado"});
 
     }catch(error){
