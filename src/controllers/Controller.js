@@ -1,6 +1,6 @@
 const Products = require('../models/productos');
 
-//list all items
+//listando json
 exports.list = async(req, res) =>{
     try{
     const productos = await Products.find({});
@@ -11,7 +11,7 @@ exports.list = async(req, res) =>{
         next();
     }
 };
-
+//mostrando un registro
 exports.show = async(req, res, next) =>{
     try{
         const productos = await Products.findOne({id: req.params.id});
@@ -27,12 +27,13 @@ exports.show = async(req, res, next) =>{
     }
 };
 
+//agregando un registro
 exports.add = async(req, res) =>{
     const stadium = new Products(req.body);
 
     try{
         await stadium.save();
-        res.json({message: "Added new stadium"});
+        res.json({message: "Producto Agregado"});
         }catch(error){
             console.log(error);
             res.send(error);
@@ -40,12 +41,13 @@ exports.add = async(req, res) =>{
         }
 };
 
+//actualizando un registro
 exports.update = async (req, res, next) =>{
     try{
         const productos = await Products.findOneAndUpdate(
             {id: req.params.id},req.body
         );
-        res.json({message: "Updated stadium"});
+        res.json({message: "Producto Actualizado"});
 
     }catch(error){
         console.log(error);
@@ -55,14 +57,15 @@ exports.update = async (req, res, next) =>{
 
 };
 
+//eliminando un producto
 exports.delete = async (req, res, next) =>{
     try{
         const productos = await Products.findOneAndDelete({id: req.params.id});
-        res.json({message: "Deleted stadium"});
+        res.json({message: "Producto eliminado"});
 
     }catch(error){
         console.log(error);
-        res.status(400).json({message: "El Cliente no existe"});
+        res.status(400).json({message: "El producto no existe"});
         next();
     }
 };

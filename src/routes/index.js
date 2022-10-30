@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const stadiumController = require('../controllers/Controller');
+const productosController = require('../controllers/Controller');
 
 //routes
 router.get('/api/test', (req, res) => {
@@ -11,15 +11,15 @@ router.get('/api/test', (req, res) => {
     res.json(data);
 });
 
-router.get('/api/list', stadiumController.list);
+router.get('/api/list', productosController.list);
 
-router.get('/api/list/:id', stadiumController.show);
+router.get('/api/list/:id',productosController.show);
 
-router.post('/api/list', stadiumController.add);
+router.post('/api/list', productosController.add);
 
-router.put('/api/list/:id', stadiumController.update);
+router.put('/api/list/:id', productosController.update);
 
-router.delete('/api/list/:id', stadiumController.delete);
+router.delete('/api/list/:id', productosController.delete);
 
 
 module.exports = router;
