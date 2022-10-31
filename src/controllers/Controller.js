@@ -3,8 +3,8 @@ const Products = require('../models/productos');
 //listando json
 exports.list = async(req, res) =>{
     try{
-    const productos = await Products.find({});
-    res.json(productos);
+    const producto = await Products.find({});
+    res.json(producto);
     }catch(error){
         console.log(error);
         res.send(error);
@@ -14,11 +14,11 @@ exports.list = async(req, res) =>{
 //mostrando un registro
 exports.show = async(req, res, next) =>{
     try{
-        const productos = await Products.findOne({id: req.params.id});
-        if(!productos){
+        const producto = await Products.findOne({id: req.params.id});
+        if(!producto){
             res.status(404).json({message: "Item not finded"});
         }
-        res.json(productos);
+        res.json(producto);
 
     }catch(error){
         console.log(error);
