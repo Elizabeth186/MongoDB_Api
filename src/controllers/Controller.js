@@ -14,11 +14,11 @@ exports.list = async(req, res) =>{
 //mostrando un registro
 exports.show = async(req, res, next) =>{
     try{
-        const producto = await Products.findOne({id: req.params.id});
-        if(!producto){
+        const productos = await Products.findOne({id: req.params.id});
+        if(!productos){
             res.status(404).json({message: "Item not finded"});
         }
-        res.json(producto);
+        res.json(productos);
 
     }catch(error){
         console.log(error);
